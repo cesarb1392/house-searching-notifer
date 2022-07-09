@@ -49,10 +49,10 @@
     "webpack-cli": "^4.8.0",
     "webpack-node-externals": "^3.0.0"
   },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "yarn build"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn build"
+    }
   },
   "engines": {
     "node": "~17.9"
