@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "backend/**/*.ts": [
-      "yarn lint:be"
+      "yarn build"
     ]
   },
   "engines": {
