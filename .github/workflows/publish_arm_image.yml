@@ -8,11 +8,8 @@ jobs:
     name: Build & Publish
     runs-on: self-hosted
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -20,11 +17,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
-#          file: Dockerfile
+          context: ./
+          file: ./Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/house_searching_notifier:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/house_searching_notifier:buildcache,mode=max
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
 
