@@ -2,5 +2,10 @@ node_modules
 npm-debug.log
 README.md
 .env.template
+.env
 .gitignore
 .nvmrc
+.husky
+.git
+.idea
+nodemon.json

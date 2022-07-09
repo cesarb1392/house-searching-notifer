@@ -19,7 +19,7 @@ const TO_SCRAPE: Operation[] = [
 const scheduleCron: Void = async () => {
     for (const scrape of TO_SCRAPE) {
         console.info(`Starting cron ${scrape.to}...`);
-        // await cron.schedule('* * * * *', async () => {
+        await cron.schedule('* * * * *', async () => {
             try {
                 const houseList = filterOutHouse(await getHouse(scrape.url));
                 if (houseList.length > 0) {
@@ -30,7 +30,7 @@ const scheduleCron: Void = async () => {
             } catch (ex) {
                 throw new Error(ex);
             }
-        // });
+        });
     }
 };
 
