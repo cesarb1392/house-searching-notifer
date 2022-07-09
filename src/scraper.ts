@@ -17,7 +17,7 @@ const getHouse: GetHouse = async (url) => {
             regexp = new RegExp('^((https?|ftp):\\/)?\\/?([^:\\/\\s]+)((\\/\\w+)*\\/)([\\w\\-\\.]+[^#?\\s]+)(.*)?(#[\\w\\-]+)?$'),
             host = regexp.exec(trigger)?.[3];
 
-        const link = host.concat(item.find('div > div > a').attr('href'))
+        const link = "https://" + host.concat(item.find('div > div > a').attr('href'))
         const street = item.find('div > div > a > h2').text().trim()
         const postcode = item.find('div > div > a > h4').text().trim()
         const price = item.find('.search-result-price').text()

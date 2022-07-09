@@ -44,6 +44,7 @@ const getMessageTemplate: (houseList: House[]) => string = (houseList) => {
     let message = `<html><body>`;
     for (const house of houseList) {
         message += `   
+<hr>
 <table>
     <tr>
             <td>    
@@ -70,6 +71,7 @@ const getMessageTemplate: (houseList: House[]) => string = (houseList) => {
             </td>
     </tr>
 </table>
+<hr>
 `;
     }
     message += `</body></html>`;
