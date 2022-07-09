@@ -38,7 +38,6 @@
     "@typescript-eslint/parser": "4.14.2",
     "eslint": "7.19.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "nodemon": "2.0.7",
     "path": "^0.12.7",
     "ts-loader": "^9.2.5",
@@ -48,11 +47,6 @@
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-node-externals": "^3.0.0"
-  },
-  "lint-staged": {
-    "*": [
-      "yarn build"
-    ]
   },
   "engines": {
     "node": "~17.9"
