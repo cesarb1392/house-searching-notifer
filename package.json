@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "start": "node ./out/index.js",
     "debug": "nodemon",
     "lint": "eslint -c .eslintrc.json --quiet --fix ./src/*.ts",
@@ -36,7 +37,8 @@
     "@typescript-eslint/eslint-plugin": "4.14.2",
     "@typescript-eslint/parser": "4.14.2",
     "eslint": "7.19.0",
-    "lint-staged": "10.5.4",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "nodemon": "2.0.7",
     "path": "^0.12.7",
     "ts-loader": "^9.2.5",
@@ -48,7 +50,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "lint-staged": {
-    "backend/**/*.ts": [
+    "src/**/*.ts": [
       "yarn build"
     ]
   },
