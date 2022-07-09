@@ -41,34 +41,33 @@ const createTransporter: () => Promise<Transporter<SMTPTransport.SentMessageInfo
 };
 
 const getMessageTemplate: (houseList: House[]) => string = (houseList) => {
-    let message = `<html><body>`;
+    let message = `<html><body><hr>`;
     for (const house of houseList) {
         message += `   
-<hr>
 <table>
     <tr>
-            <td>    
-                <a href="${house.link}">     
-                    <img width="150" height="150" src="${house.image}">
-                </a>
+        <td>    
+            <a href="${house.link}">     
+                <img width="150" height="150" src="${house.image}">
             </a>
-            </td>
-            <td>            
-                <ul>
-                    <li>
-                        <span>Address:</span> ${house.address} 
-                    </li>
-                    <li>
-                        <span>Price:</span> ${house.price}
-                    </li>
-                    <li>
-                        <span>Info:</span> ${house.info}
-                    </li>
+        </a>
+        </td>
+        <td>            
+            <ul>
                 <li>
-                    <a href="${house.link}">Link here!</a>
+                    <span>Address:</span> ${house.address} 
                 </li>
-                </ul>
-            </td>
+                <li>
+                    <span>Price:</span> ${house.price}
+                </li>
+                <li>
+                    <span>Info:</span> ${house.info}
+                </li>
+            <li>
+                <a href="${house.link}">Link here!</a>
+            </li>
+            </ul>
+        </td>
     </tr>
 </table>
 <hr>
@@ -84,7 +83,7 @@ const sendNotifications: Notify = async (houseList, operation) => {
         await transporter.sendMail({
             from: getEnvVar('EMAIL_FROM'),
             to: getEnvVar('EMAIL_TO'),
-            subject: `To ${operation.to}: New house available!`,
+            subject: ` New house(s) available to: ${operation.to.toUpperCase()}!`,
             html: getMessageTemplate(houseList)
         });
         console.info(`notified about ${houseList.length} new properties to ${operation.to}`);
