@@ -13,13 +13,8 @@ jobs:
       - run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
           
-          docker build -t $APP_NAME:$APP_VERSION ./
+          docker build -t house_searching_notifier:latest ./
           
           docker tag ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
           
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
-
-
-#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
-#      username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_TOKEN }}
