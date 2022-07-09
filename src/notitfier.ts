@@ -46,9 +46,11 @@ const getMessageTemplate: (houseList: House[]) => string = (houseList) => {
         message += `   
 <table>
     <tr>
-        <a href="${house.link}">     
             <td>    
-                <img width="150" height="150" src="${house.image}">
+                <a href="${house.link}">     
+                    <img width="150" height="150" src="${house.image}">
+                </a>
+            </a>
             </td>
             <td>            
                 <ul>
@@ -61,10 +63,11 @@ const getMessageTemplate: (houseList: House[]) => string = (houseList) => {
                     <li>
                         <span>Info:</span> ${house.info}
                     </li>
-    
+                <li>
+                    <a href="${house.link}">Link here!</a>
+                </li>
                 </ul>
             </td>
-        </a>
     </tr>
 </table>
 `;
