@@ -15,5 +15,6 @@ FROM node:17.9-alpine AS RUN
 WORKDIR /usr/src/app
 COPY --from=DEPS /usr/src/app/node_modules ./node_modules
 COPY --from=BUILD /usr/src/app/out ./out
+COPY --from=BUILD /usr/src/app/yarn.lock /usr/src/app/package.json ./
 
 CMD [ "yarn", "start" ]

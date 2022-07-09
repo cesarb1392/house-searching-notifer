@@ -12,9 +12,6 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-          
           docker build -t house_searching_notifier ./
-          
           docker tag house_searching_notifier ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
-          
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/house_searching_notifier:latest
